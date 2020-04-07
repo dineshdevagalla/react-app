@@ -16,7 +16,7 @@ onEmojiClick=(event)=>{
 render(){
 
        let EmojisCards= this.props.listOfEmojis.map(eachEmoji=>{
-             return <EmojiCardContent  key={eachEmoji.id.toString()}   id={eachEmoji.id}  onClick={this.onEmojiClick} BackgroundColor={this.props.selectedTheme}>
+             return <EmojiCardContent  key={eachEmoji.id.toString()}   id={eachEmoji}  onClick={this.onEmojiClick} BackgroundColor={this.props.selectedTheme}>
                          <EmojiImage  src={eachEmoji.EmojiUrl}/>
                          <EmojiName>{eachEmoji.name}</EmojiName>      
              </EmojiCardContent>})
