@@ -146,6 +146,8 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      '200':'12.5rem',
+       '300':'18.75rem'
     },
     backgroundColor: theme => theme('colors'),
     backgroundPosition: {
@@ -194,6 +196,7 @@ module.exports = {
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
       none: 'none',
+      '2px':'2px 3px 5px rgba(0,0,0,0.2)'
     },
     container: {},
     cursor: {
@@ -252,6 +255,7 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '15px' :'0.938rem'
     },
     fontWeight: {
       hairline: '100',
