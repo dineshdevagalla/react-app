@@ -1,0 +1,27 @@
+
+ --->Components 
+  ->todosApp component
+     ->todos one component
+     ->footer one component
+  
+  
+-->todo store 
+
+     newTodos=new TodoModel()
+   ->listOfTodos=[]
+   typpesOFFilter=""
+   listOfTodos.push(newTodos)
+   
+   
+   
+   
+   
+----->TodoModel
+     -->eachtodo={id:"",isCHecked:"",eachTodo:""}
+            ->methods
+                 ->checktodo
+                 ->Update todo
+             
+           export default TodoModel
+
+

@@ -15,7 +15,9 @@
    2.2    when user click  delete todo  should  dlete the  correspondind todo
    
 */
-import React from 'react';
+import React from 'react'
+import { observable, action, computed } from 'mobx'
+import { observer } from 'mobx-react'
 import './index.css'
 let newTodoItems = []
 
@@ -23,8 +25,12 @@ let newTodoItems = []
 class TodosFotter extends React.Component {
     constructor(props) {
         super(props)
+        this.state = { value: true }
     }
-    DisplayFotter = (seletedFilter) => { { this.props.renderingFunction(seletedFilter) }
+    DisplayFotter = (seletedFilter) => {
+        console.log("hiiii")
+
+        { this.props.renderingFunction(seletedFilter) }
     }
     clearComplete = () => {
 
@@ -37,7 +43,7 @@ class TodosFotter extends React.Component {
         let countOfcompletedtodos = this.props.fordisplaycount.filter(eachitem => eachitem.done == true)
         let countOFActivetodos = this.props.fordisplaycount.filter(eachitem => eachitem.done == false)
         if (countOfcompletedtodos.length > 0) { button = <button onClick={this.clearComplete}>clear Complete</button> } { countOFActivetodos.length == 1 ? itemsLeft = `${countOFActivetodos.length} item left` : itemsLeft = `${countOFActivetodos.length} items left` }
-        console.log(itemsLeft)
+
 
         if (this.props.forFotterDisplay.length > 0) {
             return (<div>
@@ -53,6 +59,9 @@ class TodosFotter extends React.Component {
         }
     }
 }
+
+
+
 class Todos extends React.Component {
     constructor(props) {
         super(props)
@@ -61,88 +70,98 @@ class Todos extends React.Component {
         return (
 
             <div className="content">
-          <input defaultChecked={this.props.done} id={this.props.id} onClick={this.props.checkingTodo} type="checkbox"className="check-button" />
-          <input  disabled={(this.props.done===true)? true:false} className="content-input" defaultValue={this.props.todoItem}  type="text" name="" />
-          <button onClick={this.props.removingTodo} id={this.props.id} className="delete-button">X</button>
-        </div>
+                        <input defaultChecked={this.props.done} id={this.props.id} onClick={this.props.checkingTodo} type="checkbox"className="check-button" />
+                        <input  disabled={(this.props.done===true)? true:false} className="content-input" defaultValue={this.props.todoItem}  type="text" name="" />
+                        <button onClick={this.props.removingTodo} id={this.props.id} className="delete-button">X</button>
+                    </div>
         )
     }
 }
-class AddingTodos extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { todoItems: [], eachId: 0, fotterType: "All" }
-    }
-    GettingInput = event => {
+
+
+
+
+@observer
+class AddingTodosMobox extends React.Component {
+    @observable todoItems = []
+    @observable eachId = 0
+    @observable fotterType = 'All'
+    /*constructor(){
+        super()
+        this.todoItems=[]
+       this.eachId=0
+       this.fotterType="All"
+    }*/
+    @action.bound GettingInput(event) {
         if (event.keyCode === 13) {
-            newTodoItems = this.state.todoItems.slice(0)
-            let newId = this.state.eachId += 1
+            newTodoItems = this.todoItems.slice(0)
+            let newId = this.eachId += 1
             newTodoItems.push({ Id: newId, todo: event.target.value, done: false })
             event.target.value = ""
-            this.setState({
-                todoItems: newTodoItems
-            })
+            this.todoItems = newTodoItems
+
         };
     }
-    removingTodoFromList = (event) => {
-        let remainingTodos = this.state.todoItems.filter((item, index) =>
-            item.Id !== parseInt(event.target.id)
-        )
-        this.setState({
-            todoItems: remainingTodos
-        })
+    @action.bound removingTodoFromList(event) {
+        let remainingTodos = this.todoItems.filter((item, index) =>
+            item.Id !== parseInt(event.target.id))
+        this.todoItems = remainingTodos
     }
-    functionForUpdatingCheckboxInObject = event => {
-        let checkBoxUpdated = this.state.todoItems
+    @action.bound functionForUpdatingCheckboxInObject(event) {
+        let checkBoxUpdated = this.todoItems
         checkBoxUpdated.forEach(eachitem => {
             if (event.target.id == eachitem.Id) {
                 eachitem.done = !eachitem.done
             }
-
         })
-        this.setState({ todoItems: checkBoxUpdated })
-        console.log(this.state.todoItems)
-    }
-    functionForsetStateOfFotter = (typeOfFotter) => {
-        this.setState({ fotterType: typeOfFotter })
-    }
-    clearComplete = () => {
-        let updatedTodo = this.state.todoItems.filter((item, index) =>
-            item.done == false)
+        this.todoItems = checkBoxUpdated
 
-        console.log(updatedTodo)
-        this.setState({ todoItems: updatedTodo })
     }
-    RenderingTodos = () => {
+    @action.bound
+    functionForsetStateOfFotter(typeOfFotter) {
+        console.log(typeOfFotter)
+        this.fotterType = typeOfFotter
+        //this.eachId++;
+        //this.setState({value:false});
+        //console.log(this.fotterType)
+    }
+    @action.bound
+    clearComplete() {
+        let updatedTodo = this.todoItems.filter((item, index) => item.done == false)
+        this.todoItems = updatedTodo
+    }
+
+    @computed get RenderingTodos() {
+
         let resolved
-        if (this.state.fotterType == "Active") {
-            resolved = this.state.todoItems.map(eachItem => {
+        if (this.fotterType == "Active") {
+            resolved = this.todoItems.map(eachItem => {
                 if (!eachItem.done) {
                     return <Todos key={eachItem.Id} id={eachItem.Id} todoItem={eachItem.todo} done={eachItem.done}
-             removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
+                     removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
                 }
             })
         }
-        else if (this.state.fotterType == "Complete") {
-            resolved = this.state.todoItems.map(eachItem => {
+        else if (this.fotterType == "Complete") {
+            resolved = this.todoItems.map(eachItem => {
                 if (eachItem.done) {
                     return <Todos key={eachItem.Id} id={eachItem.Id} todoItem={eachItem.todo} done={eachItem.done}
-             removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
+                     removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
                 }
             })
         }
 
-        else if (this.state.fotterType == "All") {
-            resolved = this.state.todoItems.map(eachItem => {
+        else if (this.fotterType == "All") {
+            resolved = this.todoItems.map(eachItem => {
                 return <Todos key={eachItem.Id} id={eachItem.Id} todoItem={eachItem.todo} done={eachItem.done}
-      removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
+                removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
             })
 
         }
         else {
-            resolved = this.state.todoItems.map(eachItem => {
+            resolved = this.todoItems.map(eachItem => {
                 return <Todos key={eachItem.Id} id={eachItem.Id} todoItem={eachItem.todo} done={eachItem.done}
-      removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
+                 removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
             })
         }
 
@@ -150,12 +169,14 @@ class AddingTodos extends React.Component {
     }
 
     render() {
+        console.log("render")
+        const todosToBeRendered = this.RenderingTodos;
         return (
             <div>
-      <input   onKeyDown={this.GettingInput} className="todo-input" id="input" type="text" placeholder="what need to be done?" name="" />
-        <div>{this.RenderingTodos()}</div>
-       <div> <TodosFotter forFotterDisplay={newTodoItems} renderingFunction={this.functionForsetStateOfFotter} clearComplete={this.clearComplete}
-        fordisplaycount={this.state.todoItems}/></div>
+            <input   onKeyDown={this.GettingInput} className="todo-input" id="input" type="text" placeholder="what need to be done?" name="" />
+            <div>{todosToBeRendered}</div>
+            <div> <TodosFotter forFotterDisplay={newTodoItems} renderingFunction={this.functionForsetStateOfFotter} clearComplete={this.clearComplete}
+        fordisplaycount={this.todoItems}/></div>
        
       </div>
         )
@@ -163,4 +184,11 @@ class AddingTodos extends React.Component {
 
 }
 
-export { AddingTodos }
+
+
+
+
+
+
+
+export { AddingTodosMobox }
