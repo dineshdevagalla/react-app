@@ -6,16 +6,12 @@ import {TodoStore} from '../../stores/TodoStore/todoStore'
 
 import Todo from '../../stores/models/todo'
 
- type statePropsType={
-     stateProps:TodoStore
-     
-     
- }
+
 
 
 
 @observer
-class TodoList extends React.Component<statePropsType> {
+class TodoList extends React.Component{
 
     todosList = () => {
            if(this.props.stateProps.filteredTodos)

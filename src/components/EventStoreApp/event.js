@@ -1,5 +1,6 @@
 import React from 'react'
 import { observable } from 'mobx'
+import {observer} from 'mobx-react'
 
 @observer
 class Event extends React.Component {

@@ -11,12 +11,12 @@ import TodosFotter from './todoFotter'
 
 
 @observer
-class TodoApp extends React.Component{
+class TodoApp extends React.Component {
 
     reactionForCompletionOfActiveTods = reaction(() => (todoStore.activeTodosCount), (countofActiveTodos) => {
         if (countofActiveTodos == 0) {
 
-               setTimeout(() => {
+            setTimeout(() => {
                 alert("Hey You Completd All the Todos !")
             })
         }
