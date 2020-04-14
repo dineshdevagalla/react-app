@@ -1,28 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AppHomePage from './components/HomePage/index.js'
-import CounterApp from './components/CounterPage/index.js'
-import { observable } from 'mobx'
 import { observer } from 'mobx-react'
-import { configure } from 'mobx'
 
-import TodoApp from './components/mobxStoreTodo/todoApp.js'
-import HomePage from "./components/HomePage";
+import AppHomePage from './components/HomePage/index.js'
+import TodoApp from './components/mobxStoreTodo/todoApp'
 import { CarsList } from './components/CarsList'
 import { AddingTodos } from './components/TodosList'
 import { AddingTodosMobox } from './components/TodosUsingMobox'
 import Forms from './components/FormsComponents/forms.js'
-import CountriesDashBoard from './components/Countries/countriesDashBoard.js'
-import Home from './components/home.js'
-import CountryDetails from './components/Countries/countryDetails.js'
 import Greetings from './components/FormsComponents/Greetings.js';
 import FavouriteDesserts from './components/FormsComponents/FavouriteDesserts.js'
 import VisitedCities from './components/FormsComponents/VisitedCities.js'
 import YourState from './components/FormsComponents/YourState.js'
 import DisabledButton from './components/FormsComponents/DisabledButton.js'
-import EmojiGame from './components/EmojiGame/EmojiGame/EmojiGame.js'
-import Reaction from './components/MobxPractise/index.js'
-import EventApp from './components/EventStoreApp/eventsApp.js'
+
+import EventApp from './components/EventStoreApp/eventsApp'
 
 import "./App.css";
 
@@ -38,7 +30,7 @@ import "./App.css";
 
 // import themeStore from './stores/ThemeStore'
 
-configure({ enfourse: true })
+//configure({ enfourse: true })
 
 @observer
 class App extends React.Component {
@@ -58,8 +50,7 @@ class App extends React.Component {
     
     <Router  basename={process.env.PUBLIC_URL} >
           <Switch>
-          <Route path="/counter-page"><CounterApp/></Route>
-          <Route path="/mobx-practicse"><Reaction/></Route>
+          
           <Route path="/mobx-Store-Event"><EventApp/></Route>
           <Route path="/Car"><CarsList />  </Route>
           <Route path="/Todos"><AddingTodos/>  </Route>

@@ -1,20 +1,24 @@
 import React from 'react'
-import TodoList from './todoList.js'
-import AddTodo from './addtodo.js'
-import { observer } from 'mobx-react'
-import todoStore from '../../stores/TodoStore/todoStore.js'
-import TodosFotter from './todoFotter.js'
 import { reaction } from 'mobx'
+import { observer } from 'mobx-react'
+
+import todoStore from '../../stores/TodoStore/todoStore'
+
+import TodoList from './todoList'
+import AddTodo from './addtodo'
+import TodosFotter from './todoFotter'
+
+
+
 @observer
-class TodoApp extends React.Component {
+class TodoApp extends React.Component{
 
     reactionForCompletionOfActiveTods = reaction(() => (todoStore.activeTodosCount), (countofActiveTodos) => {
         if (countofActiveTodos == 0) {
 
-            let id = setTimeout(() => {
+               setTimeout(() => {
                 alert("Hey You Completd All the Todos !")
             })
-            reaction.dispose()
         }
 
 

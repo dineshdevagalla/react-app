@@ -1,5 +1,15 @@
 import React from 'react'
-class Addtodo extends React.Component {
+import {TodoStore} from '../../stores/TodoStore/todoStore'
+
+
+
+ type statePropsType={
+     stateProps:TodoStore
+     
+     
+ }
+
+class Addtodo extends React.Component <statePropsType> {
 
     onAddTodo = (event) => {
         if (event.keyCode === 13) {

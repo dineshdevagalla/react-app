@@ -1,12 +1,26 @@
 import React from 'react'
 
 import { observer } from 'mobx-react'
+
+import {TodoStore} from '../../stores/TodoStore/todoStore'
+
+import Todo from '../../stores/models/todo'
+
+ type statePropsType={
+     stateProps:TodoStore
+     
+     
+ }
+
+
+
 @observer
-class TodoList extends React.Component {
+class TodoList extends React.Component<statePropsType> {
 
     todosList = () => {
+           if(this.props.stateProps.filteredTodos)
+         {  
         const listOfTodos = this.props.stateProps.filteredTodos.map(toDoModel => {
-            console.log(toDoModel)
             return <div key={toDoModel.id.toString()}>
            <input defaultChecked={toDoModel.isCompleted}  onClick={toDoModel.checkTheTodo}  type="checkbox"className="check-button" />
            <input  type="text" value={toDoModel.title} onChange={toDoModel.updateTodo} name="" />
@@ -15,7 +29,7 @@ class TodoList extends React.Component {
         })
         return listOfTodos
 
-
+         }
     }
 
     render() {

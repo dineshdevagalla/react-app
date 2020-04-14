@@ -1,6 +1,7 @@
 import React from 'react'
 import { observable } from 'mobx'
 
+@observer
 class Event extends React.Component {
     @observable isEdit = false
     @observable eventName = this.props.eachModel.name

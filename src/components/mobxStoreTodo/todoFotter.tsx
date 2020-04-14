@@ -1,12 +1,25 @@
 import React from 'react'
 import { observer } from 'mobx-react'
+
+
+import {TodoStore} from '../../stores/TodoStore/todoStore'
+
+
+type statePropsType={
+    stateProps:TodoStore
+}
+
+
+
+
 @observer
-class TodosFotter extends React.Component {
+class TodosFotter extends React.Component<statePropsType> {
   render() {
-    let clearCompleteButton = ''
+    let clearCompleteButton:HTMLButtonElement
     const { stateProps } = this.props
     let countOfcompletedtodos = stateProps.todos.filter(eachitem => eachitem.isCompleted == true)
-    if (countOfcompletedtodos.length > 0) {
+    if (countOfcompletedtodos.length > 0)
+    {
       clearCompleteButton = <button onClick={stateProps.onClearComplete}> Clear Complete</button>
     }
     return (<div>

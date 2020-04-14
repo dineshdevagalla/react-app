@@ -1,9 +1,15 @@
 import React from 'react'
-import EventList from './eventList.js'
-import AddEvent from './addEvent.js'
 import { observer } from 'mobx-react'
-import eventStore from '../../stores/EventStore/EventStore.js'
-import { reaction } from 'mobx'
+
+import eventStore from '../../stores/EventStore/EventStore'
+
+
+
+import EventList from './eventList'
+import AddEvent from './addEvent'
+
+
+
 
 
 @observer

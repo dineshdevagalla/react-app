@@ -18,7 +18,10 @@
 import React from 'react'
 import { observable, action, computed } from 'mobx'
 import { observer } from 'mobx-react'
-import './index.css'
+
+
+
+
 let newTodoItems = []
 
 
