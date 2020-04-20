@@ -4,7 +4,7 @@ import { TodoStore } from '../../stores/TodoStore/todoStore'
 
 
 
-class Addtodo extends React.Component{
+class Addtodo extends React.Component {
 
     onAddTodo = (event) => {
         if (event.keyCode === 13) {

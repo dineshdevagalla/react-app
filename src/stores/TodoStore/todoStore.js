@@ -1,19 +1,24 @@
-
 import { observable, action, computed } from 'mobx'
 
 import Todo from '../models/todo'
-class TodoStore{
-    @observable todos:Array<Todo> = []
+class TodoStore {
+    @observable todos = []
     @observable selectedFilter = "All"
 
 
 
-    @action.bound onAddTodo(title:string, status:boolean) {
-        const todo = new Todo(title, status)
-        this.todos.push(todo)
+    @action.bound onAddTodo(userId, id, title, completed) {
+       
+        const todoObject = {
+            userId: userId,
+            id: id,
+            title: title,
+            completed: completed
+        }
+        this.todos.push(new Todo(todoObject))
     }
 
-    @action.bound onRemoveTodo(deletedModelId:string) {
+    @action.bound onRemoveTodo(deletedModelId) {
         const finalTodos = this.todos.filter(eachModel => {
             return eachModel.id != deletedModelId
         })
@@ -52,4 +57,4 @@ class TodoStore{
 
 }
 const todoStore = new TodoStore()
-export {todoStore as default, TodoStore}
+export { todoStore as default, TodoStore }

@@ -41,6 +41,11 @@ function AppHomePage() {
       <Link to="/mobx-Store-Event">mobx Store Event</Link>
       
       </li>
+      
+      <li>
+      <Link to="/Grid-Memory-game">Grid Game </Link>
+      
+      </li>
    </ul>
   </div>
 }
