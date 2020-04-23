@@ -14,39 +14,18 @@ import YourState from './components/FormsComponents/YourState.js'
 import DisabledButton from './components/FormsComponents/DisabledButton.js'
 import GridMemoryGame from './components/GridGame/GridMemoryGame/GridMemeoryGame.js'
 import EventApp from './components/EventStoreApp/eventsApp'
-
+import UsersPage from './components/UsersPage'
+import { Provider } from 'mobx-react'
+import stores from './stores'
 import "./App.css";
-
-
-
-
-//   <Route exact path="/Countries" ><CountriesDashBoard themeChange={this.changingTheme} selectedTheme={this.getCurrentTheme()}/></Route>
-//   <Route exact path="/Countries/:countryname"><CountryDetails themeChange={this.changingTheme} selectedTheme={this.getCurrentTheme()}/></Route>
-
-//   <Route exact path="/EmojiGame"><EmojiGame themeChange={this.changingTheme} selectedTheme={this.getCurrentTheme()}/></Route>
-
-
-
-// import themeStore from './stores/ThemeStore'
-
-//configure({ enfourse: true })
 
 @observer
 class App extends React.Component {
-    // getCurrentTheme = () => {
-    //     return themeStore.selectedTheme
-    // }
-    // changingTheme = () => {
-    //     themeStore.setCurrentTheme(themeStore.selectedTheme)
-
-    // }
     render() {
 
-
         return (
-
             <div>
-    
+    <Provider {...stores}>
     <Router  basename={process.env.PUBLIC_URL} >
           <Switch>
           <Route path="/Grid-Memory-game"><GridMemoryGame/></Route>
@@ -59,13 +38,15 @@ class App extends React.Component {
           <Route  exact path="/FormsComponent/Favourite-Desserts"> <FavouriteDesserts typeOfDesserts={["Vanilla","Butterscotch","Gulab Jamum","Yogurt Ports","Baked Banana","Chocolate"]}/> </Route>
           <Route exact path="/FormsComponent/Visited-Cities"> <VisitedCities cities={["Hyderabad", "Chennai", "Bangalore", "Pune", "Mumbai", "Delhi"]}/></Route>
           <Route  exact path="/FormsComponent/Your-State"> <YourState listOfState={["Andhra Pradesh", "Telangana", "Tamil Nadu", "Kerala", "Karnataka", "Haryana"]}/></Route>
-         <Route   exact path="/FormsComponent/Disabled"> <DisabledButton/></Route>
+         <Route  exact path="/FormsComponent/Disabled"> <DisabledButton/></Route>
         <Route exact path="/FormsComponent"><Forms/></Route>
         <Route exact path="/FormsComponent"><Forms/></Route>
+        <Route exact path="/users" component={UsersPage}></Route>
 
             <AppHomePage/>
           </Switch>
     </Router>
+    </Provider>
     </div>
         );
     }
