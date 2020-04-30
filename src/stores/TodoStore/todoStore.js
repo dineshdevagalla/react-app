@@ -5,7 +5,6 @@ import { API_INITIAL, API_FAILED, API_FETCHING, API_SUCCESS } from '@ib/api-cons
 
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
 
-
 import Todo from '../models/todo'
 class TodoStore {
 
