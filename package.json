@@ -8,14 +8,11 @@
     "@ib/api": "1.0.8",
     "@ib/api-constants": "1.0.8",
     "@ib/mobx-promise": "1.0.8",
-<<<<<<< HEAD
     "@material-ui/core": "4.9.12",
     "@material-ui/icons": "4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-=======
->>>>>>> 5ebd41a0005d5e2fc218272893cdba8ba9408160
     "@types/jest": "25.2.1",
     "@types/node": "13.11.0",
     "@types/react": "16.9.32",
@@ -50,13 +47,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "js:start": "npm run watch:css & react-app-rewired start",
-<<<<<<< HEAD
     "js:build": "npm run build:css & react-app-rewired build",
     "js:test": "react-app-rewired test",
-=======
-    "js:build": "npm run build:css react-app-rewired build",
-    "js:test": "react-app-rewired test --env=jest-environment-jsdom-sixteen",
->>>>>>> 5ebd41a0005d5e2fc218272893cdba8ba9408160
     "js:eject": "react-app-rewired eject",
     "deploy": "export PUBLIC_URL=/2019/$C9_USER/react && npm run build && ./deploy.sh"
   },
