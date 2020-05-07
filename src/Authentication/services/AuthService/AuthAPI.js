@@ -14,7 +14,7 @@ class AuthService {
             baseURL: Auth_URL
         })
     }
-    getAccessTokken() {
+    signInAPI() {
         return networkCallWithApisauce(
             this.api,
             endpoints.signIn, {},

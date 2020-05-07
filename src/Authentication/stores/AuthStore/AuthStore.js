@@ -29,6 +29,7 @@ class AuthStore {
     @action.bound
     setUserAPIError(APIError){
         this.getUserSignInAPIError=APIError
+        console.log('!#$%!!!@#@$@!#$#54',APIError)
     }
     @action.bound
      setUserAPIResponse(ResponseTokken)
@@ -40,7 +41,7 @@ class AuthStore {
     @action.bound
     userSignIn(){
         
-        const AccessTokenPromise=this.authAPIService.getAccessTokken()
+        const AccessTokenPromise=this.authAPIService.signInAPI()
         
         return bindPromiseWithOnSuccess(AccessTokenPromise).to(this.setUserAPIStatus, this.setUserAPIResponse)
             .catch(this.setUserAPIError)

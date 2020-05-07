@@ -1,28 +1,32 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route,withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,withRouter } from "react-router-dom";
 import { observer } from 'mobx-react'
 
 // import AppHomePage from './components/HomePage/index.js'
 
-import   EcommercePath from './components/HomePage/E-commerceRoutePath.js'
-import SignIn from './Authentication/components/SigninPage/index.js'
+import   HomePage from './components/HomePage/E-commerceRoutePath.js'
+import {authenticationRoute} from './Authentication/routes/'
+import {EcommerceProductsDashboard} from './E-commerceDashboard/routes'
 import ProductsPage from './E-commerceDashboard/components/ProductsPage'
 import { Provider } from 'mobx-react'
 import stores from './Common/stores'
 import "./App.css";
+import ProductPageRoute from './E-commerceDashboard/routes/ProductPageRoute' 
+
 class App extends React.Component {
     render() {
-
-        return (
+            return (
             <div>
     <Provider {...stores}>
     <Router  basename={process.env.PUBLIC_URL}>
           <Switch>
             
-           <Route exact  path="/sign-in"><SignIn/></Route>
-           <Route  exact path="/products"><ProductsPage/></Route>
-            <Route exact path="/"><EcommercePath/></Route>
             
+                
+              {authenticationRoute}
+              {EcommerceProductsDashboard} 
+              <Route path="/" component={HomePage}/>
+               
             
           </Switch>
     </Router>
