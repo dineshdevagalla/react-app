@@ -1,7 +1,7 @@
 import React from 'react'
 import {observable} from 'mobx'
 import {observer,inject} from 'mobx-react'
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCart'
+
 
 import CartList from '../CartList'
 import SubTotal from '../SubTotal'

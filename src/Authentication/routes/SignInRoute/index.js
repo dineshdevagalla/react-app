@@ -1,2 +1,2 @@
-import SigninRoute from './SignInRoute.js'
-export {SigninRoute}
+import SigninRoute from './SignInRoute'
+export {SigninRoute} 

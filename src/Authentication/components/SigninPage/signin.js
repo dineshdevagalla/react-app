@@ -1,12 +1,6 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { observable} from 'mobx';
-
-import Loader from 'react-loaders'
-
- 
-
-
 import {FormPage,SignInText,UserInputText,UserPasswordText,SignInButton,ErrorMessagetext} from './styledComponent.js'
 
 

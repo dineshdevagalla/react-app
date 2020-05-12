@@ -6,6 +6,9 @@ import { observer } from 'mobx-react'
 
 import   HomePage from './components/HomePage/E-commerceRoutePath.js'
 import {authenticationRoute} from './Authentication/routes/'
+//import {CounterParent} from './Authentication/components'
+import {CounterParent} from './Authentication/components'
+import {newPerson} from './Authentication/components'
 import {EcommerceProductsDashboard} from './E-commerceDashboard/routes'
 import ProductsPage from './E-commerceDashboard/components/ProductsPage'
 import { Provider } from 'mobx-react'
@@ -21,10 +24,14 @@ class App extends React.Component {
     <Router  basename={process.env.PUBLIC_URL}>
           <Switch>
             
-            
-                
+              <Route path="/example">
+                     {/*<CounterParent/>*/}
+                     {/*{product.total}*/}
+                     <CounterParent/>
+              </Route>  
               {authenticationRoute}
               {EcommerceProductsDashboard} 
+              
               <Route path="/" component={HomePage}/>
                
             

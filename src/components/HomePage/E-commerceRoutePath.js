@@ -15,6 +15,9 @@ class HomePage extends React.Component{
               <li>
                <Link to="/products">E-commerce APP</Link>
               </li>
+              <li>
+               <Link to="/example">Example</Link>
+              </li>
               </ul> 
               
              
