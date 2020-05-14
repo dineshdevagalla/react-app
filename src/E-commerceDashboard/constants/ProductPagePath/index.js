@@ -1,1 +1,1 @@
-export const ProductPagePath="/products"
+export const ProductPagePath = '/ecommerce-store/products/'

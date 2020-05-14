@@ -1,34 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route,withRouter } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, withRouter } from "react-router-dom";
 import { observer } from 'mobx-react'
 
 // import AppHomePage from './components/HomePage/index.js'
 
-import   HomePage from './components/HomePage/E-commerceRoutePath.js'
-import {authenticationRoute} from './Authentication/routes/'
+import HomePage from './components/HomePage/E-commerceRoutePath.js'
+import { authenticationRoute } from './Authentication/routes/'
 //import {CounterParent} from './Authentication/components'
-import {CounterParent} from './Authentication/components'
-import {newPerson} from './Authentication/components'
-import {EcommerceProductsDashboard} from './E-commerceDashboard/routes'
-import ProductsPage from './E-commerceDashboard/components/ProductsPage'
+import { PersonDetails } from './Authentication/components'
+//import {newPerson} from './Authentication/components'
+import { EcommerceProductsDashboard } from './E-commerceDashboard/routes'
+//import ProductsPage from './E-commerceDashboard/components/ProductsPage'
 import { Provider } from 'mobx-react'
 import stores from './Common/stores'
 import "./App.css";
-import ProductPageRoute from './E-commerceDashboard/routes/ProductPageRoute' 
+//import ProductPageRoute from './E-commerceDashboard/routes/ProductPageRoute' 
 
 class App extends React.Component {
     render() {
-            return (
+        return (
             <div>
     <Provider {...stores}>
     <Router  basename={process.env.PUBLIC_URL}>
           <Switch>
-            
-              <Route path="/example">
-                     {/*<CounterParent/>*/}
-                     {/*{product.total}*/}
-                     <CounterParent/>
-              </Route>  
               {authenticationRoute}
               {EcommerceProductsDashboard} 
               
@@ -87,24 +81,24 @@ export default App
 
 
 
-        //   <Route path="/Grid-Memory-game"><GridMemoryGame/></Route>
-        //   <Route path="/mobx-Store-Event"><EventApp/></Route>
-        //   <Route path="/Car"><CarsList />  </Route>
-        //   <Route path="/Todos"><AddingTodos/>  </Route>
-        //   <Route path="/Todo-using-mobox"><AddingTodosMobox/></Route>
-        //   <Route path="/mobx-store-todo-app"><TodoApp/></Route>
-        //   <Route exact path="/FormsComponent/Greetings"><Greetings /></Route>
-        //   <Route  exact path="/FormsComponent/Favourite-Desserts"> <FavouriteDesserts typeOfDesserts={["Vanilla","Butterscotch","Gulab Jamum","Yogurt Ports","Baked Banana","Chocolate"]}/> </Route>
-        //   <Route exact path="/FormsComponent/Visited-Cities"> <VisitedCities cities={["Hyderabad", "Chennai", "Bangalore", "Pune", "Mumbai", "Delhi"]}/></Route>
-        //   <Route  exact path="/FormsComponent/Your-State"> <YourState listOfState={["Andhra Pradesh", "Telangana", "Tamil Nadu", "Kerala", "Karnataka", "Haryana"]}/></Route>
-        //  <Route  exact path="/FormsComponent/Disabled"> <DisabledButton/></Route>
-        // <Route exact path="/FormsComponent"><Forms/></Route>
-        // <Route exact path="/FormsComponent"><Forms/></Route>
-        // <Route exact path="/users" component={UsersPage}></Route>
-        //   <Route path="/projects">
-        //     <AppHomePage/>
-        //     </Route>
-            
-        //      <Route path="/">
-        //      <LoginPage/>
-        //     </Route> 
+//   <Route path="/Grid-Memory-game"><GridMemoryGame/></Route>
+//   <Route path="/mobx-Store-Event"><EventApp/></Route>
+//   <Route path="/Car"><CarsList />  </Route>
+//   <Route path="/Todos"><AddingTodos/>  </Route>
+//   <Route path="/Todo-using-mobox"><AddingTodosMobox/></Route>
+//   <Route path="/mobx-store-todo-app"><TodoApp/></Route>
+//   <Route exact path="/FormsComponent/Greetings"><Greetings /></Route>
+//   <Route  exact path="/FormsComponent/Favourite-Desserts"> <FavouriteDesserts typeOfDesserts={["Vanilla","Butterscotch","Gulab Jamum","Yogurt Ports","Baked Banana","Chocolate"]}/> </Route>
+//   <Route exact path="/FormsComponent/Visited-Cities"> <VisitedCities cities={["Hyderabad", "Chennai", "Bangalore", "Pune", "Mumbai", "Delhi"]}/></Route>
+//   <Route  exact path="/FormsComponent/Your-State"> <YourState listOfState={["Andhra Pradesh", "Telangana", "Tamil Nadu", "Kerala", "Karnataka", "Haryana"]}/></Route>
+//  <Route  exact path="/FormsComponent/Disabled"> <DisabledButton/></Route>
+// <Route exact path="/FormsComponent"><Forms/></Route>
+// <Route exact path="/FormsComponent"><Forms/></Route>
+// <Route exact path="/users" component={UsersPage}></Route>
+//   <Route path="/projects">
+//     <AppHomePage/>
+//     </Route>
+
+//      <Route path="/">
+//      <LoginPage/>
+//     </Route>

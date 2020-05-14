@@ -360,48 +360,120 @@ export class CounterParent extends React.Component {
 //render(<CounterParent />, document.getElementById("root"));
 */
 
-
-
-
-
 import React, { Component } from "react";
 import { render } from "react-dom";
-import { observable, action } from "mobx";
-import { observer } from "mobx-react";
 
-@observer
-export class CounterParent extends Component {
-  @observable count = 34;
-  @observable isCountChanged = false;
+export class PersonDetails extends Component {
+  state = {
+    name: "Michael",
+    address: {
+      city: "Hyderabad",
+      country: "India",
+    },
+  };
 
-  
-   async onChangeCount=()=> {
-    this.isCountChanged = true;
-    this.count = this.count + 13;
-
-    const promise = new Promise((resolve, reject) => {
-      console.log("Before resolve log");
-      resolve("Success");
-      console.log("After resolve log");
-    });
-    console.log("Before promise then log");
-    promise.then(() => {
-      this.isCountChanged = false;
-    });
+  obj = {
+    a: 1,
+    b: 2,
+    c: 3,
   }
+  array = [1, 2, 3]
+  prevState = this.state;
+  nextState = this.state;
+
+  updateAddress = () => {
+
+    this.prevState = this.state;
+
+    this.setState({
+      ...this.state,
+      address: {
+
+        ...this.state.address,
+        city: "Delhi",
+      },
+    });
+  };
 
   render() {
-    console.log("render Counter");
+
+    //console.log("restdtfy", ...this.state.address)
+    this.nextState = this.state;
+    console.log({ ...this.obj, a: 7 })
+    console.log(this.nextState === this.prevState);
+    console.log(this.nextState.name === this.prevState.name);
+
     return (
       <div>
-        <p>Count: {this.count}</p>
-        <button onClick={this.onChangeCount}>Change count</button>
-        <p>{this.isCountChanged ? "Count Changed" : ""}</p>
+        <p>Name: {this.state.name}</p>
+        <p>City: {this.state.address.city}</p>
+        <p>Name: {this.state.address.country}</p>
+        <button onClick={this.updateAddress}>Update address</button>
       </div>
     );
   }
 }
-   
-//render(<CounterParent />, document.getElementById("root"));
+
+/*
+import React, { Component } from "react";
+import { render } from "react-dom";
+import { observable } from "mobx";
+import { observer } from "mobx-react";
+
+@observer
+export class UserProfile extends Component {
+  @observable userDetails = null;
+  @observable count = 0;
+  @observable secondCount = 0;
+  @observable name = ""
+  @observable company = ""
+
+  getUserDetails = async() => {
+    await null;
+    this.count = this.count + 1;
+    this.secondCount = this.secondCount + 1;
+    let promise = new Promise((resolve, reject) => {
+      this.name = "ed"
+      this.company = "ehhfidjdkvejidc"
+      resolve({
+        name: "Tom Preston-Werner",
+        company: "Facebook",
+      });
+    });
+    let response = await promise;
+    this.userDetails = response;
+  };
+
+  render() {
+    console.log("render UserProfile")
+    console.log(this.name);
+    console.log(this.count, this.secondCount);
+
+    if (this.userDetails === null) {
+      return <button onClick={this.getUserDetails}>Get user details</button>;
+    }
+    return (
+      <div>
+      
+        <p>Name: {this.userDetails.name}</p>
+        <p>Company: {this.userDetails.company}</p>
+      </div>
+    );
+  }
+}
+
+//render(<UserProfile />, document.getElementById("root"));
 
 
+
+
+*/
+
+
+
+
+
+
+//render(<PersonDetails />, document.getElementById("root"));
+
+//render(<Months />, document.getElementById("root"));

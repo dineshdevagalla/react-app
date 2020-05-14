@@ -36,8 +36,8 @@ class SigninRoute extends React.Component {
             await authStore.userSignIn();
 
             if (getAccessToken()) {
-                history.push("/products");
-                console.log("history Pushed")
+                history.push("/ecommerce-store/products");
+                //console.log("history Pushed")
             }
             else {
                 this.errorMessage = "Retry"

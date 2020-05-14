@@ -1,1 +1,1 @@
-export const signInPath="/sign-in"
+export const signInPath = "/ecommerce-store/sign-in"
