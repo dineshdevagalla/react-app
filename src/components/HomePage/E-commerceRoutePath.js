@@ -17,6 +17,7 @@ class HomePage extends React.Component {
               </li>
               <li>
                <Link to="/example">Example</Link>
+               <Link to="/practice-advanced-concepts"> Advaced Concepts</Link>
               </li>
               </ul> 
               

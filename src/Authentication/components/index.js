@@ -359,7 +359,7 @@ export class CounterParent extends React.Component {
 
 //render(<CounterParent />, document.getElementById("root"));
 */
-
+/*
 import React, { Component } from "react";
 import { render } from "react-dom";
 
@@ -477,3 +477,23 @@ export class UserProfile extends Component {
 //render(<PersonDetails />, document.getElementById("root"));
 
 //render(<Months />, document.getElementById("root"));
+
+import React from "react"
+
+function Repeat(props) {
+  let items = [];
+  for (let i = 0; i < props.numTimes; i++) {
+    items.push(props.children(i));
+  }
+  return <div>{items}</div>;
+}
+
+export
+
+function ListOfTenThings() {
+  return (
+    <Repeat numTimes={10}>
+      {(index) => <div key={index}>This is item {index} in the list</div>}
+    </Repeat>
+  );
+}

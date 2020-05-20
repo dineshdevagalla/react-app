@@ -10,8 +10,9 @@ import { FormPage, SignInText, UserInputText, UserPasswordText, SignInButton, Er
 class SignIn extends React.Component {
 
     userNameRef = React.createRef()
+    passwordRef = React.createRef()
     componentDidMount() {
-        this.userNameRef.current.focus()
+
 
     }
 
@@ -24,18 +25,20 @@ class SignIn extends React.Component {
             onChangePassword,
             onClickSignIn,
             errorMessage,
-            apiStatus
+            apiStatus,
+            //userNameRef,
+            //passwordRef,
         } = this.props
-        
+
 
 
 
 
         return (
-            <FormPage className="">
+            <FormPage  className="">
                 <SignInText className="">Sign in</SignInText>
-                <UserInputText ref={this.userNameRef} type="text"  defaultValue={userName} onChange={onChangeUserName} placeholder="Username"/>
-                <UserPasswordText type="password"  defaultValue={password} onChange={onChangePassword} placeholder="Password" />
+                <UserInputText ref={this.userNameRef}  type="text"  defaultValue={userName} onChange={onChangeUserName} placeholder="Username"/>
+                <UserPasswordText ref={this.passwordRef}   type="password"  defaultValue={password} onChange={onChangePassword} placeholder="Password" />
                 <SignInButton onClick={onClickSignIn}  type="button">{apiStatus===100?"Loading...":"Sign in"}</SignInButton>
                 <ErrorMessagetext>{errorMessage}</ErrorMessagetext>
                     

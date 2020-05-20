@@ -4,10 +4,11 @@ import { observer } from 'mobx-react'
 
 // import AppHomePage from './components/HomePage/index.js'
 
+import { PractiseAdvancedConcepts } from './Common/routes/PractiseAdvancedConcepts'
 import HomePage from './components/HomePage/E-commerceRoutePath.js'
 import { authenticationRoute } from './Authentication/routes/'
 //import {CounterParent} from './Authentication/components'
-import { PersonDetails } from './Authentication/components'
+import { ListOfTenThings } from './Authentication/components'
 //import {newPerson} from './Authentication/components'
 import { EcommerceProductsDashboard } from './E-commerceDashboard/routes'
 //import ProductsPage from './E-commerceDashboard/components/ProductsPage'
@@ -25,7 +26,8 @@ class App extends React.Component {
           <Switch>
               {authenticationRoute}
               {EcommerceProductsDashboard} 
-              
+              <Route path="/example" component={ListOfTenThings}/>
+              <Route path="/practice-advanced-concepts" component={PractiseAdvancedConcepts}/>
               <Route path="/" component={HomePage}/>
                
             
