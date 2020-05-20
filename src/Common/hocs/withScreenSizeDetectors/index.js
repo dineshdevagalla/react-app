@@ -26,7 +26,7 @@ export const withScreenSizeDetectors = (WrappedComponent) => {
         isDesktop = () => window.innerWidth >= 992
 
         render() {
-            return <WrappedComponent  deviceType={this.deviceType} {...this.props}/>;
+            return <WrappedComponent  deviceType={this.deviceType}/>;
 
         }
 
