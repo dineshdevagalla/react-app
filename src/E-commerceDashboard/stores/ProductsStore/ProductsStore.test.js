@@ -86,7 +86,6 @@ describe("ProductsStore test", () => {
         productsStore.onChangeSortBY("ASCENDING")
         expect(productsStore.sortBy).toBe("ASCENDING")
 
-
     })
 
 
@@ -102,7 +101,7 @@ describe("ProductsStore test", () => {
         productsStore.onSelectSize(selectedSize);
         expect(productsStore.sizeFilter).toStrictEqual(Array('M'));
     });
- 
+
 
 
 

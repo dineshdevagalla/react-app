@@ -1,7 +1,9 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
-``
+
+
+import { InputElement } from '../../../Common/components/InputElement/InputElement'
 import { FormPage, SignInText, UserInputText, UserPasswordText, SignInButton, ErrorMessagetext } from './styledComponent.js'
 
 
@@ -35,11 +37,11 @@ class SignIn extends React.Component {
 
 
         return (
-            <FormPage  className="">
+            <FormPage>
                 <SignInText className="">Sign in</SignInText>
-                <UserInputText ref={this.userNameRef}  type="text"  defaultValue={userName} onChange={onChangeUserName} placeholder="Username"/>
-                <UserPasswordText ref={this.passwordRef}   type="password"  defaultValue={password} onChange={onChangePassword} placeholder="Password" />
-                <SignInButton onClick={onClickSignIn}  type="button">{apiStatus===100?"Loading...":"Sign in"}</SignInButton>
+                <InputElement ref={this.userNameRef}  type="text"  defaultValue={userName} onChange={onChangeUserName} placeholder="Username"/>
+                <InputElement ref={this.passwordRef}   type="password"  defaultValue={password} onChange={onChangePassword} placeholder="Password" />
+                <SignInButton onClick={onClickSignIn}  type="button">Sign in</SignInButton>
                 <ErrorMessagetext>{errorMessage}</ErrorMessagetext>
                     
             </FormPage>

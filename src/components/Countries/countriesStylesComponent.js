@@ -17,7 +17,8 @@ const InputField = styled.input `${tw `w-200 p-3 border-none `}${props=>({color:
 
 const WhereInTheWorld = styled.p `${tw`text-3xl font-semibold `}`
 
-const ThemeOptionButton = styled.button `${tw`border-none text-2xl shadow-2px`} ${props=>({color:props.theme.color,backgroundColor:props.theme.backgroundColor})}`
+const ThemeOptionButton = styled.button `${tw`border-none text-2xl shadow-2px`} $ { props => ({ color: props.theme.color, backgroundColor: props.theme.backgroundColor }) }
+`
 
 const HeaderDiv = styled.div `${tw`flex justify-between items-center shadow-2px mb-px`}`
 
@@ -26,15 +27,15 @@ const SelectedRegionDiv = styled.select `${tw` appearance-none	 text-2xl shadow-
 const InputFieldAndSearchIconDiv = styled.div `${tw `flex justify-center items-center shadow-2px`}`
 
 export {
- CountryProperties,
- CountryCardStyle,
- FilterBarDiv,
- InputField,
- WhereInTheWorld,
- ThemeOptionButton,
- HeaderDiv,
- SelectedRegionDiv,
- InputFieldAndSearchIconDiv,
- CountryDashBoard
+    CountryProperties,
+    CountryCardStyle,
+    FilterBarDiv,
+    InputField,
+    WhereInTheWorld,
+    ThemeOptionButton,
+    HeaderDiv,
+    SelectedRegionDiv,
+    InputFieldAndSearchIconDiv,
+    CountryDashBoard
 
 }

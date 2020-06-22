@@ -7,6 +7,7 @@ import { observer } from "mobx-react"
 class ProtectedRoute extends React.Component {
     render() {
         const { path, component: Component } = this.props
+
         if (getAccessToken()) {
 
             return <Route path={path} component={Component} />
@@ -14,9 +15,9 @@ class ProtectedRoute extends React.Component {
 
         else {
 
-
-            return <Redirect to={{pathname:signInPath}}/>
-        }0
+            return <Route path={path} component={Component} />
+            //return <Redirect to={{pathname:signInPath}}/>
+        }
 
 
     }

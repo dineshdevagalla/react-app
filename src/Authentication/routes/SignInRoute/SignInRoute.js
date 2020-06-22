@@ -11,7 +11,7 @@ import { getAccessToken } from '../../utils/StorageUtils'
 @observer
 class SigninRoute extends React.Component {
     entireFormRef = React.createRef()
-    
+
     @observable userName = '';
     @observable password = '';
     @observable errorMessage = "";
@@ -24,7 +24,7 @@ class SigninRoute extends React.Component {
     }
     componentDidMount() {
 
-        this.entireFormRef.current.userNameRef.current.focus()
+        // this.entireFormRef.current.userNameRef.current.focus()
     }
 
     onChangeUserName = (event) => {
@@ -34,7 +34,8 @@ class SigninRoute extends React.Component {
         this.password = event.target.value;
     }
     onClickSignIn = async() => {
-
+           alert(10)
+        this.props.history.push("/ecommerce-store/products");
         if (this.userName.length !== 0 && this.password.length !== 0) {
             const { history, authStore } = this.props;
 
@@ -42,7 +43,7 @@ class SigninRoute extends React.Component {
             await authStore.userSignIn();
 
             if (getAccessToken()) {
-                history.push("/ecommerce-store/products");
+                
             }
             else {
                 this.errorMessage = "Retry"
@@ -51,14 +52,14 @@ class SigninRoute extends React.Component {
 
         }
         else if (this.userName.length === 0 || this.userName === undefined) {
-            this.entireFormRef.current.userNameRef.current.focus()
-            console.log(this.entireFormRef)
+            //   this.entireFormRef.current.userNameRef.current.focus()
+            //console.log(this.entireFormRef)
             this.errorMessage = "please Enter Username"
 
         }
         else if (this.password === '' || this.password === undefined) {
             this.errorMessage = "please Enter Password"
-            this.entireFormRef.current.passwordRef.current.focus()
+            //this.entireFormRef.current.passwordRef.current.focus()
 
         }
 

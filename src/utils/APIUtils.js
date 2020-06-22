@@ -28,3 +28,4 @@ export const getUserDisplayableErrorMessage = (error) => {
   catch (exception) {}
   return defaultMessage
 }
+

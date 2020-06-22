@@ -45,7 +45,7 @@ class TodosFotter extends React.Component {
             <button onClick={() => this.DisplayFotter('All')}>All</button>
             <button onClick={() => this.DisplayFotter('Active')}>active</button>
             <button onClick={() => this.DisplayFotter('Complete')}>complete</button>
-            {button}
+            {button} 
         </div>)
         }
         else {
@@ -101,7 +101,7 @@ class AddingTodos extends React.Component {
 
         })
         this.setState({ todoItems: checkBoxUpdated })
-        console.log(this.state.todoItems)
+
     }
     functionForsetStateOfFotter = (typeOfFotter) => {
         this.setState({ fotterType: typeOfFotter })
@@ -118,8 +118,12 @@ class AddingTodos extends React.Component {
         if (this.state.fotterType == "Active") {
             resolved = this.state.todoItems.map(eachItem => {
                 if (!eachItem.done) {
-                    return <Todos key={eachItem.Id} id={eachItem.Id} todoItem={eachItem.todo} done={eachItem.done}
-             removingTodo={this.removingTodoFromList} checkingTodo={this.functionForUpdatingCheckboxInObject}/>
+                    return <Todos key={eachItem.Id} 
+                    id={eachItem.Id}
+                    todoItem={eachItem.todo}
+                    done={eachItem.done}
+                   removingTodo={this.removingTodoFromList}
+                   checkingTodo={this.functionForUpdatingCheckboxInObject}/>
                 }
             })
         }

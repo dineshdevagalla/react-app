@@ -9,9 +9,12 @@ class HomePage extends React.Component {
  render() {
 
   return (
-   <div className="flex items-center justify-center">
+   <div className="flex items-center justify-center ">
              <img src={logo} className="App-logo" alt="logo" />
               <ul>
+                <li>
+                <Link to="/Car"> CarsList</Link>
+                </li>
               <li>
                <Link to='/ecommerce-store/products/'>E-commerce APP</Link>
               </li>
@@ -19,6 +22,9 @@ class HomePage extends React.Component {
                <Link to="/example">Example</Link>
                <Link to="/practice-advanced-concepts"> Advaced Concepts</Link>
               </li>
+               <li>
+                  <Link to="/Grid-Memory-game">->Grid Game </Link>
+                </li>
               </ul> 
               
              

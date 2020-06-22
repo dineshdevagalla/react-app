@@ -3,20 +3,21 @@ import { HashRouter as Router, Switch, Route, withRouter } from "react-router-do
 import { observer } from 'mobx-react'
 
 // import AppHomePage from './components/HomePage/index.js'
-
+import GridMemoryGame from './components/GridGame/GridMemoryGame/GridMemeoryGame.js'
+import { CarsList } from './components/CarsList'
 import { PractiseAdvancedConcepts } from './Common/routes/PractiseAdvancedConcepts'
 import HomePage from './components/HomePage/E-commerceRoutePath.js'
 import { authenticationRoute } from './Authentication/routes/'
-//import {CounterParent} from './Authentication/components'
-import { ListOfTenThings } from './Authentication/components'
-//import {newPerson} from './Authentication/components'
+
+import { Pages } from './Authentication/components'
+
 import { EcommerceProductsDashboard } from './E-commerceDashboard/routes'
-//import ProductsPage from './E-commerceDashboard/components/ProductsPage'
+
 import { Provider } from 'mobx-react'
 import stores from './Common/stores'
 import "./App.css";
 //import ProductPageRoute from './E-commerceDashboard/routes/ProductPageRoute' 
-
+//{authenticationRoute}
 class App extends React.Component {
     render() {
         return (
@@ -24,10 +25,12 @@ class App extends React.Component {
     <Provider {...stores}>
     <Router  basename={process.env.PUBLIC_URL}>
           <Switch>
-              {authenticationRoute}
+              
               {EcommerceProductsDashboard} 
-              <Route path="/example" component={ListOfTenThings}/>
+              <Route path="/example" component={Pages}/>
               <Route path="/practice-advanced-concepts" component={PractiseAdvancedConcepts}/>
+              <Route path="/Grid-Memory-game"><GridMemoryGame/></Route>
+              <Route path="/Car"><CarsList/></Route>
               <Route path="/" component={HomePage}/>
                
             
@@ -83,7 +86,7 @@ export default App
 
 
 
-//   <Route path="/Grid-Memory-game"><GridMemoryGame/></Route>
+//   
 //   <Route path="/mobx-Store-Event"><EventApp/></Route>
 //   <Route path="/Car"><CarsList />  </Route>
 //   <Route path="/Todos"><AddingTodos/>  </Route>

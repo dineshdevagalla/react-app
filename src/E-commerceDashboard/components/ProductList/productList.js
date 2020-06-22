@@ -15,9 +15,12 @@ class  ProductList extends React.Component{
     
     
     render(){
-        const {sortAndFilterdProducts} =this.props.productsStore
+        
         const {onClickAddToCart}=this.props.cartStore
-        const listOfProducts=sortAndFilterdProducts.map(eachProduct=>{return <Product key={Math.random().toString()} onClickAddToCart={onClickAddToCart}  product={eachProduct}/>})
+           const{products}=this.props.productsStore.paginationStore;
+           
+           
+        const listOfProducts=products.map(eachProduct=>{return <Product key={Math.random().toString()} onClickAddToCart={onClickAddToCart}  product={eachProduct}/>})
         
         return(
            <ListOfProductsWrap className="flex flex-wrap justify-around"> {listOfProducts}</ListOfProductsWrap>

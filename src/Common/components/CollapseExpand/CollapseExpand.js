@@ -20,7 +20,6 @@ class CollapseExpand extends React.Component {
               <div className="flex">
               <span>Sample Shopping List:</span>
              {toggleStatus?<div>
-             
              <button onClick={onToggle}>Collapse</button>
               {this.renderShoppingList()}
              </div>:<button onClick={onToggle}>Expand</button>} 

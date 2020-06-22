@@ -7,13 +7,12 @@ class DisplayMouseCoordinates extends React.Component {
 
 
         return (
-            <div >
+            <div>
             <h1>Dispaly Mouse Coordinates</h1>
                <MouseCoordinates render={(mouseCoordinates,handleMouseMove)=>(<div onMouseMove={handleMouseMove}>The mouse position ({mouseCoordinates.x},{mouseCoordinates.y})</div>)
     }
-    />
-
-    </div>
+    /> < /
+    div >
 )
 }
 }

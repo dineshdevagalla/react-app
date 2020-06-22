@@ -1,6 +1,6 @@
 const endpoints = {
-  signIn: "v1/signin/",
- 
+    signIn: "v1/signin/",
+
 };
 
 export default endpoints;

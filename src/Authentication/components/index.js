@@ -478,22 +478,38 @@ export class UserProfile extends Component {
 
 //render(<Months />, document.getElementById("root"));
 
-import React from "react"
+//import React, { Component } from "react";
+import React from 'react'
+import ReactDOM from "react-dom";
+import Pagination from "react-js-pagination";
+//require("bootstrap/less/bootstrap.less");
 
-function Repeat(props) {
-  let items = [];
-  for (let i = 0; i < props.numTimes; i++) {
-    items.push(props.children(i));
+export class Pages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: 15
+    };
   }
-  return <div>{items}</div>;
+
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({ activePage: pageNumber });
+  }
+
+  render() {
+    return (
+      <div>
+        <Pagination
+          activePage={this.state.activePage}
+          itemsCountPerPage={10}
+          totalItemsCount={450}
+          pageRangeDisplayed={5}
+          onChange = { this.handlePageChange.bind(this) }
+        />
+      </div>
+    );
+  }
 }
 
-export
-
-function ListOfTenThings() {
-  return (
-    <Repeat numTimes={10}>
-      {(index) => <div key={index}>This is item {index} in the list</div>}
-    </Repeat>
-  );
-}
+//ReactDOM.render(<App />, document.getElementById("root"));

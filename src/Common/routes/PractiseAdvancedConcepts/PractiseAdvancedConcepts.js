@@ -15,6 +15,9 @@ class PractiseAdvancedConcepts extends React.Component {
              <h1>Hoc's Usage</h1>
             <ViewEditToggle/>
             <CollapseExpand list={["Eggs","Bread"]}/>
+            <CollapseExpand list={["dinesh","devagalla"]}/>
+            <CollapseExpand list={["vamsi","gogada"]}/>
+            <CollapseExpand list={["pmething","someone"]}/>
             <DisplayTypeText/>
             <h1>Render Props Usage</h1>
             <DisplayMouseCoordinates/>
